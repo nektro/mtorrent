@@ -1,6 +1,8 @@
 # mtorrent
 ![loc](https://sloc.xyz/github/nektro/mtorrent)
 [![discord](https://img.shields.io/discord/551971034593755159.svg?logo=discord)](https://discord.gg/P6Y4zQC)
+[![circleci](https://circleci.com/gh/nektro/mtorrent.svg?style=svg)](https://circleci.com/gh/nektro/mtorrent)
+[![release](https://img.shields.io/github/v/release/nektro/mtorrent)](https://github.com/nektro/mtorrent/releases/latest)
 [![goreportcard](https://goreportcard.com/badge/github.com/nektro/mtorrent)](https://goreportcard.com/report/github.com/nektro/mtorrent)
 [![downloads](https://img.shields.io/github/downloads/nektro/mtorrent/total.svg)](https://github.com/nektro/mtorrent/releases)
 
@@ -10,6 +12,9 @@ A totally configurable terminal torrent client.
 ```
 go get github.com/nektro/mtorrent
 ```
+
+### Releases
+https://github.com/nektro/mtorrent/releases
 
 ## Flags
 ```
