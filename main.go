@@ -58,9 +58,9 @@ func main() {
 	flagSF := pflag.IntP("seed-for", "s", 0, "When positive, minutes to seed torrents for. (-1: forever) (0: only leech)")
 	flagIH := pflag.BoolP("include-btih-in-dn", "i", false, "If true, folder name will be 'btih dn' instead of 'dn'.")
 	flagTB := pflag.Int("trim-btih", 40, "")
-	flagED := pflag.Bool("enable-dht", false, "")
 	flagMF := pflag.String("magnet-file", "", "")
 	flagPT := pflag.Bool("pack-tar", false, "")
+	flagDH := pflag.Bool("disable-dht", false, "Setting this will disable DHT.")
 	pflag.Parse()
 
 	//
@@ -106,7 +106,7 @@ func main() {
 
 	util.Log("Starting up client...")
 	cf := torrent.NewDefaultClientConfig()
-	cf.NoDHT = !*flagED
+	cf.NoDHT = *flagDH
 	cf.DisablePEX = true
 	cf.Debug = false
 	cf.Bep20 = *flagPI + randomHex(20-len(*flagPI))
