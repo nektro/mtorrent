@@ -57,10 +57,10 @@ func main() {
 	flagPL := pflag.String("peers-log", "", "An optional path to log file that will list all peers per torrent.")
 	flagSF := pflag.IntP("seed-for", "s", 0, "When positive, minutes to seed torrents for. (-1: forever) (0: only leech)")
 	flagIH := pflag.BoolP("include-btih-in-dn", "i", false, "If true, folder name will be 'btih dn' instead of 'dn'.")
-	flagTB := pflag.Int("trim-btih", 40, "")
-	flagMF := pflag.String("magnet-file", "", "")
-	flagPT := pflag.Bool("pack-tar", false, "")
+	flagTB := pflag.Int("trim-btih", 40, "This will trim the length of the info hash used when --include-btih-in-dn is used.")
 	flagDH := pflag.Bool("disable-dht", false, "Setting this will disable DHT.")
+	flagMF := pflag.String("magnet-file", "", "Path to a text file with magnet links on each line.")
+	flagPT := pflag.Bool("pack-tar", false, "Enabling this will pack torrent folder into a .tar so that it only takes up a single file.")
 	pflag.Parse()
 
 	//
