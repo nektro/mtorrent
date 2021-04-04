@@ -220,20 +220,22 @@ func addT(f func(string) (*torrent.Torrent, error), s string) {
 			t.Info().Name = (t.InfoHash().HexString()[:hashTrimLen] + " " + t.Info().Name)
 		}
 		name := t.Info().Name
+		workName := workingDir + "/" + name
+		doneName := doneDir + "/" + name
 
 		if packTar {
-			if util.DoesFileExist(doneDir + "/" + name + ".tar") {
+			if util.DoesFileExist(doneName + ".tar") {
 				closeT(t, true)
 				return
 			}
 		} else {
-			if util.DoesFileExist(doneDir + "/" + name) {
+			if util.DoesFileExist(doneName) {
 				go func() {
 					if seedFor > 0 {
-						os.Rename(doneDir+"/"+name, workingDir+"/"+name)
+						os.Rename(doneName, workName)
 						t.VerifyData()
 						time.Sleep(time.Minute * time.Duration(seedFor))
-						os.Rename(workingDir+"/"+name, doneDir+"/"+name)
+						os.Rename(workName, doneName)
 					}
 					closeT(t, true)
 				}()
@@ -265,9 +267,6 @@ func addT(f func(string) (*torrent.Torrent, error), s string) {
 					go func() {
 						time.Sleep(time.Minute * time.Duration(seedFor))
 						closeT(t, false)
-
-						workName := workingDir + "/" + name
-						doneName := doneDir + "/" + name
 
 						if packTar {
 							stat, _ := os.Stat(workName)
