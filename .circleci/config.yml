@@ -16,3 +16,4 @@ jobs:
       - store_artifacts:
           path: ./bin/
           destination: /artifacts/
+      - run: ./make_release.sh
