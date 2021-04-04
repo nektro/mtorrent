@@ -228,7 +228,15 @@ func addT(f func(string) (*torrent.Torrent, error), s string) {
 			}
 		} else {
 			if util.DoesFileExist(doneDir + "/" + name) {
-				closeT(t, true)
+				go func() {
+					if seedFor > 0 {
+						os.Rename(doneDir+"/"+name, workingDir+"/"+name)
+						t.VerifyData()
+						time.Sleep(time.Minute * time.Duration(seedFor))
+						os.Rename(workingDir+"/"+name, doneDir+"/"+name)
+					}
+					closeT(t, true)
+				}()
 				return
 			}
 		}
