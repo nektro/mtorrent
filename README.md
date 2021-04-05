@@ -40,6 +40,9 @@ Usage of ./mtorrent:
   -w, --working-dir string     Directory to store in-progress torrents. (default "./")
 ```
 
+## Screenshots
+![pic of downloads in progress](./screenshots/01_progress.png)
+
 ## Contact
 - hello@nektro.net
 - https://twitter.com/nektro
